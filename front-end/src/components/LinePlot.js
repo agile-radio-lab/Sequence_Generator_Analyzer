@@ -30,7 +30,7 @@ const lineGraphSettings = {
       },
     };
 
-const LinePlot = ({y,metricName,scalType='linear',xlabel,ylabel} ) => {
+const LinePlot = ({y,metricName,xlabel,ylabel} ) => {
 
     const [data,setData]  = useState([]);
 
@@ -47,7 +47,7 @@ const LinePlot = ({y,metricName,scalType='linear',xlabel,ylabel} ) => {
 
     return (
         <Col md={12} lg={4} >
-        < Card style={{ height:'20rem',width:"40rem"}}>
+        < Card style={{ height:'22rem',width:"40rem"}}>
             <Card.Header style={{fontWeight: "bolder", backgroundColor: "#blue"}} >  {metricName} </Card.Header>
         <Card.Body>
         <ResponsiveLine
@@ -57,7 +57,7 @@ const LinePlot = ({y,metricName,scalType='linear',xlabel,ylabel} ) => {
         data={ [{"id": metricName,"data":data},]}
             margin={{ top: 50, right: 30, bottom: 50, left: 60 }}
             xScale={{ type: 'linear' ,min:0,max:y.length}}
-            yScale={{ type: scalType,min:-1,max:1}}
+            yScale={{ type: 'linear',min:-1,max:1}}
             yFormat=" >-.2f"
             axisTop={null}
             axisRight={null}
@@ -88,7 +88,7 @@ const LinePlot = ({y,metricName,scalType='linear',xlabel,ylabel} ) => {
             pointBorderWidth={3}
             pointBorderColor={{ from: 'serieColor' }}
             pointLabelYOffset={-12}
-            useMesh={true}
+            useMesh={false}
             animate={false}
 
             legends={[

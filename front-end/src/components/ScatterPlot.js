@@ -30,7 +30,7 @@ const lineGraphSettings = {
       },
     };
 
-const ScatterPlot = ({x,y,metricName,scalType='linear',axis,xlabel,ylabel,width,height} ) => {
+const ScatterPlot = ({x,y,metricName,axis,xlabel,ylabel,width,height} ) => {
 
     const [data,setData]  = useState([]);
 
@@ -62,7 +62,7 @@ const ScatterPlot = ({x,y,metricName,scalType='linear',axis,xlabel,ylabel,width,
         data={ [{"id": metricName,"data":data},]}
             margin={{ top: 50, right: 30, bottom: 50, left: 60 }}
             xScale={{ type: 'linear' ,min:axis[0],max:axis[1]}}
-            yScale={{ type: scalType,min:axis[2],max:axis[3]}}
+            yScale={{ type: 'linear',min:axis[2],max:axis[3]}}
             yFormat=" >-.2f"
             axisTop={null}
             axisRight={null}

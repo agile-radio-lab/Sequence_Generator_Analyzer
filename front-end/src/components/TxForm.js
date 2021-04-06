@@ -89,15 +89,15 @@ const downloadFile = async (e) => {
           </Form.Group>
 
           {typeOfSeq=== "pss" && 
-        <Form.Group controlId="formGridState">
-        <Form.Label>Zadoff Chu Root Seq Idx</Form.Label>
-        <Form.Control as="select" defaultValue="0" onChange={e => setZadoffChuRootSeq(e.target.value)}>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-        </Form.Control>
-        </Form.Group>
-        }
+          <Form.Group controlId="formGridState">
+          <Form.Label>Zadoff Chu Root Seq Idx</Form.Label>
+          <Form.Control as="select" defaultValue="0" onChange={e => setZadoffChuRootSeq(e.target.value)}>
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+          </Form.Control>
+          </Form.Group>
+          }
 
         {typeOfSeq === "rect" &&
             <Form.Group as={Col} controlId="formGridZip">
@@ -107,11 +107,12 @@ const downloadFile = async (e) => {
         }
 
         </Form.Row>
+        <Form.File id="exampleFormControlFile1" label="JSON file input" onChange={e => handleChange(e)}/>
+
         <Button variant="primary" type="submit" onClick={handelOnClick}>
           Submit
         </Button>
         <Button variant="primary" type="submit" onClick={downloadFile}>Save as JSON</Button>
-        <Form.File id="exampleFormControlFile1" label="JSON file input" onChange={e => handleChange(e)}/>
       </Form>
     );
 }

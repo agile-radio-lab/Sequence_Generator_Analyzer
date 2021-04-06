@@ -35,8 +35,8 @@ function MainPage() {
       <ScatterPlot x={iqData.real} y={iqData.imag} metricName="IQ PLOT" axis={[-1,1,-1,1]} xlabel="Real" ylabel="Imaginary" height="40rem" width="40rem"></ScatterPlot>
       </Col>
       <Col>
-      <LinePlot y={iqData.real} metricName="Real" xlabel="Samples" ylabel="I"></LinePlot>
-      <LinePlot y={iqData.imag} metricName="Imaginary" xlabel="Samples" ylabel="Q"></LinePlot>
+      <LinePlot  y={iqData.real} metricName="Real" xlabel="Samples" ylabel="I"></LinePlot>
+      <LinePlot  y={iqData.imag} metricName="Imaginary" xlabel="Samples" ylabel="Q"></LinePlot>
       </Col>
       </Row>
       </Col>
