@@ -74,7 +74,7 @@ const downloadFile = async (e) => {
         <Form.Row>
 
           <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>N_samples [N]</Form.Label>
+            <Form.Label>N Samples [N]</Form.Label>
             <Form.Control placeholder="200" value={samples} onChange={e => setSamples(e.target.value)}/>
           </Form.Group>
       

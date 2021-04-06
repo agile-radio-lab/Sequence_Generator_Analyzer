@@ -6,11 +6,13 @@ import TxForm from "../components/TxForm";
 import FftForm from "../components/FftForm";
 import LinePlot from "../components/LinePlot";
 import ScatterPlot from "../components/ScatterPlot";
-import WaterFallForm from "../components/WaterFallForm";
+import WaterFallPlot from "../components/WaterFallPlot";
 
 function MainPage() {
   const [iqData,setIqData] = useState({real:[],imag:[]}) 
   const [fftData,setFftData] = useState([]);
+  const [img,setImg] = useState("");
+
 
   const plotUpdate = (data) => {
     setIqData(data);  
@@ -18,6 +20,10 @@ function MainPage() {
   const plotFftUpdate = (fftdata) => {
     setFftData(fftdata);
   }
+  const plotWaterFall = (waterfall) =>{
+    setImg(waterfall);
+  }
+
 
     return <Container fluid>
     <Row>
@@ -37,9 +43,9 @@ function MainPage() {
       
       <Col >
       <h2 >Sequence Analyser</h2>
-      <FftForm I={iqData.real} Q={iqData.imag} onFfTPlotUpdate={plotFftUpdate}></FftForm>
+      <FftForm I={iqData.real} Q={iqData.imag} onFfTPlotUpdate={plotFftUpdate} onGetWaterFallImg={plotWaterFall}></FftForm>
       <ScatterPlot x={-1} y={fftData} metricName="FFT PLOT" axis={[0,fftData.length,-120,0]} xlabel="Frequency [Hz]" ylabel="PSD [dB]" height="30rem" width="60rem"></ScatterPlot>
-      <WaterFallForm ></WaterFallForm>
+      <WaterFallPlot waterFallImg={img} ></WaterFallPlot>
       </Col>
       </Row>
   </Container>;
