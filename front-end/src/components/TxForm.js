@@ -110,7 +110,7 @@ const downloadFile = async (e) => {
         <Form.File id="exampleFormControlFile1" label="JSON file input" onChange={e => handleChange(e)}/>
 
         <Button variant="primary" type="submit" onClick={handelOnClick}>
-          Submit
+          Generate Sequence
         </Button>
         <Button variant="primary" type="submit" onClick={downloadFile}>Save as JSON</Button>
       </Form>

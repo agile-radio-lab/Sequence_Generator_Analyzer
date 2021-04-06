@@ -60,7 +60,7 @@ const FftForm =  ({onFfTPlotUpdate,I,Q,onGetWaterFallImg})=> {
                 </Col>
                 <Col>
                     <Button variant="primary" type="submit" onClick={handelOnClick}>
-                            Submit
+                    Calculate FFT
                     </Button>
                     <Button variant="primary" type="submit" onClick={handelOnClickGet} >
                     Get Waterfall
