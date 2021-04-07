@@ -75,7 +75,10 @@ const downloadFile = async (e) => {
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>N Samples [N]</Form.Label>
-            <Form.Control placeholder="200" value={samples} onChange={e => setSamples(e.target.value)}/>
+            <Form.Control placeholder="200" value={samples>10000 ? 10000:samples} onChange={e => setSamples(e.target.value)}/>
+            { samples > 10000 && 
+            <p>Can't set more 10000</p>
+            }
           </Form.Group>
       
           <Form.Group as={Col} controlId="formGridZip">
