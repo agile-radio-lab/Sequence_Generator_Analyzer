@@ -22,12 +22,12 @@ function TxForm({onPlotUpdate}) {
         "period":Number(t),
         "zaddoff_chu_root":Number(zadoffChuRootSeq),
         "puls_width":Number(pulsWidth),
-        "seq_samples":{"real":[],
+        "iq_samples":{"real":[],
                        "imag":[]}
     })
   .then(function (response) {
-    onPlotUpdate(response.data.seq_samples);
-    setFile(JSON.stringify(response.data));
+    onPlotUpdate(response.data.iq_samples);
+    setFile(JSON.stringify(response.data.iq_samples));
   })
   .catch(function (error) {
     console.log(error);
@@ -39,7 +39,7 @@ const handleChange = (e) => {
   fileReader.readAsText(e.target.files[0], "UTF-8");
   fileReader.onload = (e) => {
     const newFileData = JSON.parse(e.target.result);
-    onPlotUpdate(newFileData.seq_samples);
+    onPlotUpdate(newFileData);
   };
 };
 

@@ -1,6 +1,7 @@
 # Front-End and Back-End Implementation for HTWK sequence generator
 This readme file includes the start-up instructions for running the sequence generator/analyzer.
-
+## Prerequisites
+git, python3-venv, python3-pip, uvicorn, npm
 ## Back-End 
 The back-end contains the different sequences and fast fourier transform calculations.
 Create venv:
@@ -22,7 +23,7 @@ uvicorn main:app --host 0.0.0.0 --reload
 For documentation: open [This Link](http://localhost:8000/docs)
 
 ## Front-End 
-if node is installed, inside the front-end directory run:
+if npm is installed, inside the front-end directory run:
 Install depandencies:
 ```bash
 npm i

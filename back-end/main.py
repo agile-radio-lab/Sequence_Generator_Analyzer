@@ -22,8 +22,8 @@ app.add_middleware(
 @app.post("/get_seq")
 async def get_seq(seq: Sequencs):
     result = type_of_sequence[seq.type_of_seq](n_samples=seq.n_samples,amp=seq.amp,T=seq.period,N=seq.zaddoff_chu_root,puls_width=seq.puls_width)
-    seq.seq_samples.real = [float(x) for x in result.real ]
-    seq.seq_samples.imag = [float(x) for x in result.imag ]
+    seq.iq_samples.real = [float(x) for x in result.real ]
+    seq.iq_samples.imag = [float(x) for x in result.imag ]
     return seq
 
 @app.post("/calc_fft")

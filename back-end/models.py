@@ -22,4 +22,4 @@ class Sequencs(BaseModel):
     period:float
     puls_width:Optional[int] = 0
     zaddoff_chu_root:Optional[int] = 0
-    seq_samples:IQ_Samples
+    iq_samples:IQ_Samples
