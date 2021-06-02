@@ -21,7 +21,7 @@ const FftForm =  ({onFfTPlotUpdate,I,Q,onGetWaterFallImg})=> {
 
     const handelOnClickGet= (e) =>{
     e.preventDefault();
-    getBase64("http://localhost:8000/get_waterfall").then (base64 => {
+    getBase64("http://192.168.11.61:8000/get_waterfall").then (base64 => {
         onGetWaterFallImg("data:;base64," + base64);
     })
   }

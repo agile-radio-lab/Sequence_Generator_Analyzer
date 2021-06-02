@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sequences import *
+import math
 
 FFT_SIZE = 1024
 plt.rcParams.update({'font.size': 14})
@@ -12,7 +13,7 @@ def psd(samples,fft_size=FFT_SIZE):
     result = np.fft.fftshift(result)
     result = np.square(np.abs(result))
     result = np.nan_to_num(10.0 * np.log10(result))
-    result = np.abs(result)
+    # result = np.abs(result)
     return result
 
 def calc_fft_psd(real,imag,fft_size):
@@ -20,7 +21,7 @@ def calc_fft_psd(real,imag,fft_size):
     n_fft_steps = int(np.floor(len(samples)/fft_size))
     freq_result = np.zeros([n_fft_steps, fft_size])
     for i in range(n_fft_steps):
-        bins = -1*psd(samples[i*fft_size:(i+1)*fft_size],fft_size)
+        bins = psd(samples[i*fft_size:(i+1)*fft_size],fft_size)
         freq_result[i] = bins
     return np.mean(freq_result, axis=0)
 
@@ -28,7 +29,7 @@ def calc_water_fall(samples,fft_size):
     n_fft_steps = int(np.floor(len(samples)/fft_size))
     freq_result = np.zeros([n_fft_steps, fft_size])
     for i in range(n_fft_steps):
-        bins = -1*psd(samples[i*fft_size:(i+1)*fft_size],fft_size)
+        bins = psd(samples[i*fft_size:(i+1)*fft_size],fft_size)
         freq_result[i] = bins
     return freq_result
 
@@ -38,14 +39,20 @@ def plot_water_fall(real,imag,fft_size):
     freq_result = calc_water_fall(samples,fft_size)
     fig, ax = plt.subplots(1,1,figsize=(16, 8))
     cmap = plt.get_cmap("inferno")
-    ax.pcolormesh(freq_result, cmap=cmap,vmax=0, vmin=-120)
-    ax.set_xlabel("Frequency")
+    ax.pcolormesh(freq_result,cmap=cmap,vmax=0, vmin=-120)
+    ax.set_xlabel("Frequency [bins]")
     ax.set_ylabel("Time")
+    xticks = calc_ticks(fft_size)
+    plt.xticks(np.arange(0,fft_size+1,fft_size/5),xticks )
     ax.xaxis.label.set_color('white')
     ax.yaxis.label.set_color('white')
     ax.tick_params(colors='white')
     plt.savefig('./plots/waterfall.png',bbox_inches='tight',transparent=True)
 
+def calc_ticks(fft_size):
+    ticks = np.arange(-fft_size/2,fft_size/2+1,fft_size/5)
+    ticks = [math.floor(i) for i in ticks ]
+    return ticks
 # # test waterfall
 # samples = shape_signal(pss(), 1,100)
 # freq_result = calc_water_fall(samples,FFT_SIZE)

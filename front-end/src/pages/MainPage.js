@@ -32,7 +32,7 @@ function MainPage() {
       <TxForm onPlotUpdate={plotUpdate}></TxForm>
       <Row>
         <Col>
-      <ScatterPlot x={iqData.real} y={iqData.imag} metricName="IQ PLOT" axis={[-1,1,-1,1]} xlabel="Real" ylabel="Imaginary" height="40rem" width="40rem"></ScatterPlot>
+      <ScatterPlot x={iqData.real} y={iqData.imag} metricName="IQ PLOT"  xlabel="Real" ylabel="Imaginary" height="40rem" width="40rem"></ScatterPlot>
       </Col>
       <Col>
       <LinePlot  y={iqData.real} metricName="Real" xlabel="Samples" ylabel="I"></LinePlot>
@@ -44,7 +44,7 @@ function MainPage() {
       <Col >
       <h2 >Sequence Analyser</h2>
       <FftForm I={iqData.real} Q={iqData.imag} onFfTPlotUpdate={plotFftUpdate} onGetWaterFallImg={plotWaterFall}></FftForm>
-      <ScatterPlot x={-1} y={fftData} metricName="FFT PLOT" axis={[0,fftData.length,-120,0]} xlabel="Frequency [Hz]" ylabel="PSD [dB]" height="30rem" width="60rem"></ScatterPlot>
+      <ScatterPlot x={-1} y={fftData} metricName="FFT PLOT"  xlabel="Frequency [bins]" ylabel="Magnitude" height="30rem" width="60rem"></ScatterPlot>
       <WaterFallPlot waterFallImg={img} ></WaterFallPlot>
       </Col>
       </Row>

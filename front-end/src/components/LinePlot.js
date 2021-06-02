@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ResponsiveLine } from '@nivo/line';
+import { ResponsiveScatterPlot } from '@nivo/scatterplot';
 import { Card,Col} from "react-bootstrap";
 
 const lineGraphSettings = {
@@ -34,7 +34,6 @@ const LinePlot = ({y,metricName,xlabel,ylabel} ) => {
 
     const [data,setData]  = useState([]);
 
-
     useEffect(() =>{
         let newData = [];
         for (let i=0;i<y.length;i+=1){
@@ -42,22 +41,23 @@ const LinePlot = ({y,metricName,xlabel,ylabel} ) => {
         }
         setData(newData);
 
+
             
     },[y]);
 
     return (
         <Col md={12} lg={4} >
-        < Card style={{ height:'22rem',width:"40rem"}}>
+        < Card style={{ height:'28rem',width:"48rem"}}>
             <Card.Header style={{fontWeight: "bolder", backgroundColor: "#blue"}} >  {metricName} </Card.Header>
         <Card.Body>
-        <ResponsiveLine
+        <ResponsiveScatterPlot
         colors={{ scheme: 'nivo' }}
         borderColor={{ from: 'color' }}
         curve="monotoneX"
         data={ [{"id": metricName,"data":data},]}
             margin={{ top: 50, right: 30, bottom: 50, left: 60 }}
             xScale={{ type: 'linear' ,min:0,max:y.length}}
-            yScale={{ type: 'linear',min:-1,max:1}}
+            yScale={{ type: 'linear',min:Math.min(...y),max:Math.max(...y)}}
             yFormat=" >-.2f"
             axisTop={null}
             axisRight={null}
@@ -83,7 +83,7 @@ const LinePlot = ({y,metricName,xlabel,ylabel} ) => {
             }}
 
             theme={lineGraphSettings.theme}
-            pointSize={2}
+            pointSize={3}
             pointColor={{ theme: 'background' }}
             pointBorderWidth={3}
             pointBorderColor={{ from: 'serieColor' }}

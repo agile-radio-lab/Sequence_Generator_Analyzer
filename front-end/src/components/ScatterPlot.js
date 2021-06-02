@@ -30,7 +30,7 @@ const lineGraphSettings = {
       },
     };
 
-const ScatterPlot = ({x,y,metricName,axis,xlabel,ylabel,width,height} ) => {
+const ScatterPlot = ({x,y,metricName,xlabel,ylabel,width,height} ) => {
 
     const [data,setData]  = useState([]);
 
@@ -39,7 +39,7 @@ const ScatterPlot = ({x,y,metricName,axis,xlabel,ylabel,width,height} ) => {
         let newData = [];
         if (x === -1){
         for (let i=0;i<y.length;i+=1){
-            newData.push({"x": i,"y":y[i]});
+            newData.push({"x": i -(y.length/2),"y":y[i]});
         }
     }else{
         for (let i=0;i<y.length;i+=1){
@@ -61,8 +61,8 @@ const ScatterPlot = ({x,y,metricName,axis,xlabel,ylabel,width,height} ) => {
         curve="monotoneX"
         data={ [{"id": metricName,"data":data},]}
             margin={{ top: 50, right: 30, bottom: 50, left: 60 }}
-            xScale={{ type: 'linear' ,min:axis[0],max:axis[1]}}
-            yScale={{ type: 'linear',min:axis[2],max:axis[3]}}
+            xScale={{ type: 'linear',min:x === -1 ? -(y.length/2): Math.min(...x), max:x === -1 ? (y.length/2):Math.max(...x) }}
+            yScale={{ type: 'linear',min:Math.min(...y),max:Math.max(...y)}}
             yFormat=" >-.2f"
             axisTop={null}
             axisRight={null}
