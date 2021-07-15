@@ -39,7 +39,11 @@ def plot_water_fall(real,imag,fft_size):
     freq_result = calc_water_fall(samples,fft_size)
     fig, ax = plt.subplots(1,1,figsize=(16, 8))
     cmap = plt.get_cmap("inferno")
-    ax.pcolormesh(freq_result,cmap=cmap,vmax=0, vmin=-120)
+    im = ax.pcolormesh(freq_result,cmap=cmap,vmax=0, vmin=-120)
+    cbar = fig.colorbar(im, ax=ax)
+    cbytick_obj = plt.getp(cbar.ax.axes, 'yticklabels')                #tricky
+    plt.setp(cbytick_obj, color='white')
+    cbar.set_label('Power [dBm]',color="white")
     ax.set_xlabel("Frequency [bins]")
     ax.set_ylabel("Time")
     xticks = calc_ticks(fft_size)

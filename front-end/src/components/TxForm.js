@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Form,Col,Button} from "react-bootstrap";
 import backendSettings from "../services/Backend";
 
-
+const SIGNALS = {"ones":"ones","cosine":"cos","consine squared":"cos^","positive exponential":"exp","negative exponential":"neg_exp","rectangular":"rect","primary synchronization signal":"pss"}
 function TxForm({onPlotUpdate}) {
   const [amp,setAmp] = useState(0.5);
   const [t,setT] = useState(10);
@@ -60,14 +60,11 @@ const downloadFile = async (e) => {
         <Form>
         <Form.Group controlId="formGridState">
         <Form.Label>Type of sequence</Form.Label>
-        <Form.Control as="select" defaultValue="ones" onChange={e => setTypeOfSeq(e.target.value)}>
-            <option>ones</option>
-            <option>cos</option>
-            <option>cos^</option>
-            <option>exp</option>
-            <option>neg_exp</option>
-            <option>rect</option>
-            <option>pss</option>
+        <Form.Control as="select" defaultValue="ones" onChange={e => setTypeOfSeq(SIGNALS[e.target.value])}>
+          {Object.keys(SIGNALS).map((key) =>(
+            <option key={key}>{key}</option>
+          ),
+          )}
         </Form.Control>
         </Form.Group>
         

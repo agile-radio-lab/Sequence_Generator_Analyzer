@@ -9,7 +9,7 @@ import ScatterPlot from "../components/ScatterPlot";
 import WaterFallPlot from "../components/WaterFallPlot";
 
 function MainPage() {
-  const [iqData,setIqData] = useState({real:[],imag:[]}) 
+  const [iqData,setIqData] = useState({real:[],imag:[],yLim:[]}) 
   const [fftData,setFftData] = useState([]);
   const [img,setImg] = useState("");
 
@@ -25,7 +25,9 @@ function MainPage() {
   }
 
 
-    return <Container fluid>
+    return (
+      <div className="page">
+    <Container fluid>
     <Row>
       <Col xs={7}>
       <h2 >Sequence Generator</h2>
@@ -48,7 +50,9 @@ function MainPage() {
       <WaterFallPlot waterFallImg={img} ></WaterFallPlot>
       </Col>
       </Row>
-  </Container>;
+  </Container>
+  </div>
+    );
 
 }
 

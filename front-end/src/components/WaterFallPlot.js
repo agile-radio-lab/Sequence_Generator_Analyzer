@@ -13,9 +13,9 @@ const WaterFallPlot =  (waterFallImg)=> {
       return (
         <>
         <Col md={12} lg={12} >
-        < Card style={{ height:'35rem',width:"60rem"}}>
+        < Card style={{ height:'42rem',width:"67rem"}}>
         <Card.Body>
-        <img width={900} hight={200} src={img} alt="waterfall"/>
+        <img width={1040} hight={200} src={img} alt="waterfall"/>
         </Card.Body>
         <Card.Footer>Water Fall Plot</Card.Footer>
         </Card>
